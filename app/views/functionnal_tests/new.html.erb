@@ -1,0 +1,14 @@
+<h1>Création d'un test</h1>
+
+<%= simple_form_for @test, wrapper: :horizontal_form do |f| %>
+
+  <%= f.input :tracker, collection: FunctionnalTest.trackers.keys, include_blank: false %>
+  <%= f.input :title %>
+  <%= f.input :tracker_number %>
+  <%= f.input :reference %>
+  <%= f.input :url_link %>
+  <%= f.input :position %>
+
+  <%= f.button :submit, "Créer", class: "btn-primary" %>
+
+<% end %>

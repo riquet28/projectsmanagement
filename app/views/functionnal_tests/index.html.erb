@@ -1,2 +1,14 @@
-<h1>FunctionnalTests#index</h1>
-<p>Find me in app/views/functionnal_tests/index.html.erb</p>
+<h1>Liste des tests</h1>
+
+<% @tests.each do |test| %>
+  <h2><%= test.title %></h2>
+  <p><%= test.reference %></p>
+  <p><%= test.tracker %></p>
+  <p><%= test.url_link %></p>
+  <p><%= test.position %></p>
+  <p><a href="<%= functionnal_test_path(test.id) %>" class="btn btn-primary">Voir</a></p>
+  <p><a href="<%= edit_functionnal_test_path(test.id) %>" class="btn btn-primary">Editer</a></p>
+  <p><a href="<%= functionnal_test_path(test.id) %>" class="btn btn-danger" data-confirm="Etes-vous sur?" data-method="DELETE">Supprimer</a></p>
+<% end %>
+
+<a href="<%= new_functionnal_test_path %>" class="btn btn-success">Créer un test</a>
