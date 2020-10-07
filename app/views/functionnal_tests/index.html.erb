@@ -1,14 +1,26 @@
-<h1>Liste des tests<i class="fab fa-facebook-f fa-3x mx-2"></i></h1>
+<div class="card">
+  <div class="card-body">
+    <h2 class='card-title d-flex justify-content-between mb-4'>
+      <span>Tests</span>
+      <%= link_to 'Nouveau test', new_functionnal_test_path, class: 'btn btn-primary' %>
+    </h2>
 
-<% @tests.each do |test| %>
-  <h2><%= test.title %></h2>
-  <p><%= test.reference %></p>
-  <p><%= test.tracker %></p>
-  <p><%= test.url_link %></p>
-  <p><%= test.position %></p>
-  <p><a href="<%= functionnal_test_path(test.id) %>" class="btn btn-primary">Voir</a></p>
-  <p><a href="<%= edit_functionnal_test_path(test.id) %>" class="btn btn-primary">Editer</a></p>
-  <p><a href="<%= functionnal_test_path(test.id) %>" class="btn btn-danger" data-confirm="Etes-vous sur?" data-method="DELETE">Supprimer</a></p>
-<% end %>
-
-<a href="<%= new_functionnal_test_path %>" class="btn btn-success">Créer un test</a>
+    <% @tests.each do |test| %>
+      <div class="card project-card mb-3">
+        <div class="card-body">
+          <div class="mb-3">
+            <span class="badge badge-success">Ticket <%= test.tracker_number %></span>
+            <span class='text-secondary'><small>Tracker: <%= test.tracker %></small></span>
+            <span class='text-secondary'><small>Position: <%= test.position %></small></span>
+          </div>
+          <h5 class='card-title text-dark'><b><%= test.title %></b></h5>
+          <p class='text-secondary'><%= test.description %></p>
+          <p class='text-secondary'><%= test.url_link %></p>
+          <span><a href="<%= functionnal_test_path(test.id) %>" class="btn btn-primary">Voir</a></span>
+          <span><a href="<%= edit_functionnal_test_path(test.id) %>" class="btn btn-primary">Editer</a></span>
+          <span><a href="<%= functionnal_test_path(test.id) %>" class="btn btn-danger" data-confirm="Etes-vous sur?" data-method="DELETE">Supprimer</a></span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -50,7 +50,8 @@ class FunctionnalTestsController < ApplicationController
         :tracker_number,
         :reference,
         :url_link,
-        :position
+        :position,
+        :description
       )
   end
 

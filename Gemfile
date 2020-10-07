@@ -25,10 +25,13 @@ gem 'bootsnap', '>= 1.4.2', require: false # Reduces boot times through caching;
 gem 'better_errors', '~> 2.1', '>= 2.1.1'
 gem 'kaminari'
 
+
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0.1'
   gem 'factory_bot_rails'
+  gem 'simplecov', require: false
 end
 
 group :development do
