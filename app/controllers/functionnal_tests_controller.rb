@@ -37,7 +37,7 @@ class FunctionnalTestsController < ApplicationController
   def destroy
     @test = FunctionnalTest.find(params[:id])
     @test.destroy
-    redirect_to functionnal_tests_path
+    redirect_to functionnal_tests_path, notice: "Successfully destroyed a test"
   end
 
   private
