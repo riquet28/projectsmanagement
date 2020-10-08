@@ -1,0 +1,15 @@
+<div class="card project-card mb-3">
+  <div class="card-body">
+    <div class="mb-3">
+      <span class="badge badge-success">Ticket <%= functionnal_test.tracker_number %></span>
+      <span class='text-secondary'><small>Tracker: <%= functionnal_test.tracker %></small></span>
+      <span class='text-secondary'><small>Position: <%= functionnal_test.position %></small></span>
+    </div>
+    <h5 class='card-title text-dark'><b><%= functionnal_test.title %></b></h5>
+    <p class='text-secondary'><%= functionnal_test.description %></p>
+    <p class='text-secondary'><%= functionnal_test.url_link %></p>
+    <span><a href="<%= functionnal_test_path(functionnal_test.id) %>" class="btn btn-primary">Voir</a></span>
+    <span><a href="<%= edit_functionnal_test_path(functionnal_test.id) %>" class="btn btn-primary">Editer</a></span>
+    <span><a href="<%= functionnal_test_path(functionnal_test.id) %>" class="btn btn-danger" data-confirm="Etes-vous sur?" data-method="DELETE">Supprimer</a></span>
+  </div>
+</div>

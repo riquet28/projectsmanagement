@@ -9,6 +9,15 @@ require("@rails/activestorage").start()
 require("channels")
 global.toastr = require("toastr")
 
+
+
+// Patch conflit jQuery $ is not defined
+// Voir comment fixer plus propre
+import JQuery from 'jquery';
+window.$ = window.JQuery = JQuery;
+
+
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -18,9 +27,9 @@ global.toastr = require("toastr")
 import "bootstrap";
 import "../stylesheets/application"
 import "../stylesheets/application"
+import "@fortawesome/fontawesome-free/js/all";
 
 document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()
   $('[data-toggle="popover"]').popover()
 })
-import "@fortawesome/fontawesome-free/js/all";

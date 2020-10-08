@@ -1,11 +1,12 @@
 class FunctionnalTestsController < ApplicationController
+  before_action :set_functionnal_test, only: [:show, :edit, :update, :destroy]
 
   def index
     @tests = FunctionnalTest.all
+    @test = FunctionnalTest.new
   end
 
   def show
-    @test = FunctionnalTest.find(params[:id])
   end
 
   def new
@@ -14,19 +15,24 @@ class FunctionnalTestsController < ApplicationController
 
   def create
     @test = FunctionnalTest.create(test_params)
-    if @test.save
-      redirect_to @test, notice: "Successfully created a test"
-    else
-      render :new
+
+    respond_to do |format|
+      if @test.save
+        format.html { redirect_to @test, notice: "Successfully created a test" }
+        #format.json { render :show, location: @test }
+        format.js
+      else
+        format.html { render :new, notice: "Successfully created a test" }
+        #format.json { render json: @test.errors }
+        format.js
+      end
     end
   end
 
   def edit
-    @test = FunctionnalTest.find(params[:id])
   end
 
   def update
-    @test = FunctionnalTest.find(params[:id])
     if @test.update(test_params)
       redirect_to functionnal_tests_path, notice: "Successfully updated a test"
     else
@@ -35,24 +41,19 @@ class FunctionnalTestsController < ApplicationController
   end
 
   def destroy
-    @test = FunctionnalTest.find(params[:id])
     @test.destroy
     redirect_to functionnal_tests_path, notice: "Successfully destroyed a test"
   end
 
   private
 
-  def test_params
-    params.require(:functionnal_test)
-      .permit(
-        :tracker,
-        :title,
-        :tracker_number,
-        :reference,
-        :url_link,
-        :position,
-        :description
-      )
-  end
+    def set_functionnal_test
+      @test = FunctionnalTest.find(params[:id])
+    end
+
+    def test_params
+      params.require(:functionnal_test).permit(:tracker, :title, :tracker_number, :reference,
+                                               :url_link, :position, :description)
+    end
 
 end
