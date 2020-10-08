@@ -52,6 +52,8 @@
           null,
           1,
           1,
+          null,
+          1,
           1,
           null,
           1,
@@ -996,6 +998,16 @@
       "/Users/riquet/Desktop/projectsmanagement/app/helpers/application_helper.rb": {
         "lines": [
           1,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
           null
         ]
       },
@@ -1092,9 +1104,6 @@
         "lines": [
           1,
           null,
-          null,
-          null,
-          null,
           1,
           null,
           1,
@@ -1111,6 +1120,6 @@
         ]
       }
     },
-    "timestamp": 1602031294
+    "timestamp": 1602201083
   }
 }

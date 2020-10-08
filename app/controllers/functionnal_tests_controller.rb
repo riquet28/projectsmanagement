@@ -1,4 +1,5 @@
 class FunctionnalTestsController < ApplicationController
+
   before_action :set_functionnal_test, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -19,11 +20,9 @@ class FunctionnalTestsController < ApplicationController
     respond_to do |format|
       if @test.save
         format.html { redirect_to @test, notice: "Successfully created a test" }
-        #format.json { render :show, location: @test }
         format.js
       else
         format.html { render :new, notice: "Successfully created a test" }
-        #format.json { render json: @test.errors }
         format.js
       end
     end

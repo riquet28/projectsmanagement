@@ -24,7 +24,7 @@ gem 'simple_form'
 gem 'bootsnap', '>= 1.4.2', require: false # Reduces boot times through caching; required in config/boot.rb
 gem 'better_errors', '~> 2.1', '>= 2.1.1'
 gem 'kaminari'
-
+gem "validate_url"
 
 
 group :development, :test do
