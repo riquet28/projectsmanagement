@@ -25,6 +25,7 @@ gem 'bootsnap', '>= 1.4.2', require: false # Reduces boot times through caching;
 gem 'better_errors', '~> 2.1', '>= 2.1.1'
 gem 'kaminari'
 gem "validate_url"
+gem 'acts_as_list'
 
 
 group :development, :test do

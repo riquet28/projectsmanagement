@@ -1,4 +1,5 @@
 class FunctionnalTest < ApplicationRecord
+  acts_as_list
 
   enum tracker: [ :anomaly, :evolution, :assistance, :user_story ]
 
