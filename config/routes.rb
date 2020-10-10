@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :functionnal_tests do
+  resources :tickets do
     member do
       patch :move
     end

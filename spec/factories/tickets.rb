@@ -1,6 +1,6 @@
 FactoryBot.define do
 
-  factory :functionnal_test do
+  factory :ticket do
       title { "Premier test" }
       reference { "Ticket xx" }
       tracker_number { 5789 }

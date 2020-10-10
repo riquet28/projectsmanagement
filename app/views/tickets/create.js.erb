@@ -1,0 +1,5 @@
+$("#new_ticket").modal('hide');
+console.log("1")
+$("#container_ticket").append('<%= j render @ticket %>');
+console.log("2")
+$("#ticket<%= @ticket.id %>").hide().fadeIn(1000);

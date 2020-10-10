@@ -1,8 +1,8 @@
-<h1>Edition de <%= @test.title %> / <%= @test.id %></h1>
+<h1>Edition de <%= @ticket.title %> / <%= @ticket.id %></h1>
 
-<%= simple_form_for @test, wrapper: :horizontal_form do |f| %>
+<%= simple_form_for @ticket, wrapper: :horizontal_form do |f| %>
 
-  <%= f.input :tracker, collection: FunctionnalTest.trackers.keys, include_blank: false %>
+  <%= f.input :tracker, collection: Ticket.trackers.keys, include_blank: false %>
   <%= f.input :title %>
   <%= f.input :tracker_number %>
   <%= f.input :reference %>
