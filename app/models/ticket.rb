@@ -8,7 +8,7 @@ class Ticket < ApplicationRecord
 
   enum tracker: [ :anomaly, :evolution, :assistance, :user_story ]
 
-  validates :reference, :tracker_number, :title, presence: true
+  validates :issue_id, :title, presence: true
   validates :url_link, presence: true , url: true
 
   def set_position

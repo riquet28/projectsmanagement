@@ -25,8 +25,7 @@
               <%= simple_form_for @ticket, remote: true, wrapper: :horizontal_form do |f| %>
                 <%= f.input :tracker, collection: Ticket.trackers.keys, include_blank: false %>
                 <%= f.input :title %>
-                <%= f.input :tracker_number %>
-                <%= f.input :reference %>
+                <%= f.input :issue_id %>
                 <%= f.input :url_link %>
                 <%= f.input :description %>
             </div>

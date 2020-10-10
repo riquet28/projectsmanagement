@@ -60,7 +60,7 @@ class TicketsController < ApplicationController
     end
 
     def test_params
-      params.require(:ticket).permit(:tracker, :title, :tracker_number, :reference,
+      params.require(:ticket).permit(:tracker, :title, :issue_id, :reference,
                                                :url_link, :position, :description)
     end
 
