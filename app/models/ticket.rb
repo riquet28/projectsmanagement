@@ -4,6 +4,9 @@ class Ticket < ApplicationRecord
 
   acts_as_list
 
+  has_many :actions
+  has_many :results, :through => :actions
+
   scope :ordered_by_position, -> { order(position: :asc) }
 
   enum tracker: [ :anomaly, :evolution, :assistance, :user_story ]
