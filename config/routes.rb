@@ -6,4 +6,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :scenarios do
+    resources :results
+  end
+
 end

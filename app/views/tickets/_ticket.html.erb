@@ -12,5 +12,6 @@
     <span><a href="<%= ticket_path(ticket.id) %>" class="btn btn-primary">Voir</a></span>
     <span><a href="<%= edit_ticket_path(ticket.id) %>" class="btn btn-primary">Editer</a></span>
     <span><a href="<%= ticket_path(ticket.id) %>" class="btn btn-danger" data-confirm="Etes-vous sur?" data-method="DELETE">Supprimer</a></span>
+    <%= link_to "Voir les tests", scenarios_path(ticket_id: ticket.id), class: "btn btn-primary" %>
   </div>
 </div>

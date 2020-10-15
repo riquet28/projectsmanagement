@@ -4,8 +4,9 @@ class Ticket < ApplicationRecord
 
   acts_as_list
 
-  has_many :actions
-  has_many :results, :through => :actions
+  has_many :scenarios
+  has_many :results, :through => :scenarios
+
 
   scope :ordered_by_position, -> { order(position: :asc) }
 

@@ -1,0 +1,23 @@
+<div class="jumbotron">
+  <h1 class="display-4"><%= @ticket.tracker %> <%= @ticket.issue_id %> | <%= @ticket.title %></h1>
+  <h2><%= @ticket.url_link %></h2>
+  <p class="lead"></p><%= @ticket.description %></p></p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <p class="lead">
+  </p>
+</div>
+
+
+<div id="scenarios">
+  <%= render @scenarios %>
+</div>
+
+<br>
+
+<div id="new-scenario" class="mb-50">
+  <%= link_to "Nouveau scénario", new_scenario_path(ticket_id: @ticket.id), remote: true %>
+</div>
+
+<br>
+<br>

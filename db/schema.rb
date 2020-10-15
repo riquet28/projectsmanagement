@@ -15,18 +15,18 @@ ActiveRecord::Schema.define(version: 2020_10_10_213914) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "actions", force: :cascade do |t|
-    t.string "description"
-    t.bigint "ticket_id"
-    t.index ["ticket_id"], name: "index_actions_on_ticket_id"
-  end
-
   create_table "results", force: :cascade do |t|
     t.string "description"
     t.integer "dev", default: 0
     t.integer "staging", default: 0
-    t.bigint "action_id"
-    t.index ["action_id"], name: "index_results_on_action_id"
+    t.bigint "scenario_id"
+    t.index ["scenario_id"], name: "index_results_on_scenario_id"
+  end
+
+  create_table "scenarios", force: :cascade do |t|
+    t.string "description"
+    t.bigint "ticket_id"
+    t.index ["ticket_id"], name: "index_scenarios_on_ticket_id"
   end
 
   create_table "tickets", force: :cascade do |t|
