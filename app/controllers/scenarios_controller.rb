@@ -9,31 +9,28 @@ class ScenariosController < ApplicationController
 
   def new
     @scenario = Scenario.new(ticket_id: params[:ticket_id])
-    @scenario.results.build#(scenario_id: @scenario.id)
+    @scenario.results.build
   end
 
   def create
     @scenario = Scenario.create(scenario_params)
-    #byebug
     respond_to do |format|
       if @scenario.save
         format.html {redirect_to scenarios_path(ticket_id: @scenario.ticket_id), notice: "Scénario créé"}
         format.js
       else
-        format.html {render :new}
+        format.html {redirect_to scenarios_path(ticket_id: @scenario.ticket_id), notice: "Scénario non créé"}
       end
     end
   end
 
   def edit
-      #@scenario.results.build
   end
 
   def update
     respond_to do |format|
       if @scenario.update(scenario_params)
         format.html {redirect_to scenarios_path(ticket_id: @scenario.ticket_id), notice: "Scénario mis à jour"}
-        #format.js
       else
         format.html {render :new}
       end
