@@ -1,1 +1,2 @@
-$("#scenario_<%= @scenario.id %>").hide().parent().prepend("<%= j render 'form' %>");
+// Peut-être revoir plus tard dans un refacto
+$("#scenario_<%= @scenario.id %>").hide().siblings().hide().parent().removeClass( "row" ).prepend("<%= j render 'form' %>");

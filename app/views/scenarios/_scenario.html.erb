@@ -5,7 +5,7 @@
       <div class="card-body">
         <p><%= scenario.description %></p>
         <p class="delete">
-          <span><%= link_to "Editer", edit_scenario_path(scenario, ticket_id: @ticket.id), remote: true, class: "btn btn-primary" %></span>
+          <span><%= link_to "Editer", edit_scenario_path(scenario, ticket_id: @ticket.id), remote: true, class: "btn btn-warning" %></span>
           <span><%= link_to "Supprimer", scenario_path(scenario, ticket_id: @ticket.id), method: :delete, data: {confirm: "Etes-vous sur", remote: true }, class: "btn btn-danger" %></span>
         </p>
       </div>
@@ -41,3 +41,5 @@
   </div>
 
 </div>
+
+<hr>

@@ -16,7 +16,6 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.create(test_params)
-
     respond_to do |format|
       if @ticket.save
         format.html { redirect_to @ticket, notice: "Successfully created a ticket" }
@@ -43,6 +42,17 @@ class TicketsController < ApplicationController
     end
   end
 
+  def update_comment # Update le commentaire directement dans les tests du ticket
+    @ticket = Ticket.find(params[:ticket_id])
+    respond_to do |format|
+      if @ticket.update(test_params)
+        format.html { redirect_to scenarios_path(params[:scenario_id], ticket_id: @ticket.id), notice: "Commentaire mis à jour" }
+      else
+        format.html { redirect_to @scenario, notice: "Le commentaire n'a pas été mis à jour" }
+      end
+    end
+  end
+
   def destroy
     @ticket.destroy
     redirect_to tickets_path, notice: "Successfully destroyed a test"
@@ -61,7 +71,7 @@ class TicketsController < ApplicationController
 
     def test_params
       params.require(:ticket).permit(:tracker, :title, :issue_id, :reference,
-                                     :url_link, :position, :description)
+                                     :url_link, :position, :description, :comment)
     end
 
 end

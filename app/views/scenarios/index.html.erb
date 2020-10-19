@@ -8,15 +8,32 @@
   </p>
 </div>
 
-
 <div id="scenarios">
   <%= render @scenarios %>
 </div>
 
+<div id="new-scenario" class="mb-50">
+  <%= link_to "Nouveau scénario", new_scenario_path(ticket_id: @ticket.id), remote: true, class: "btn btn-dark btn-block" %>
+</div>
+
 <br>
 
-<div id="new-scenario" class="mb-50">
-  <%= link_to "Nouveau scénario", new_scenario_path(ticket_id: @ticket.id), remote: true %>
+<div class="row" id="commentaire">
+  <div class="col-sm-12">
+    <%= simple_form_for @ticket, :url => update_comment_path(ticket_id: @ticket.id) do |f| %>
+      <div class="card">
+        <div class="card-body">
+          <h4>Commentaire</h4>
+          <div class="form-inputs">
+            <%= f.input :comment, as: :text %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Mettre à jour", class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <br>
