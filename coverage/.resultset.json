@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/riquet/Desktop/projectsmanagement/spec/models/functionnal_test_spec.rb": {
+      "/Users/riquet/Desktop/projectsmanagement/spec/models/ticket_spec.rb": {
         "lines": [
           1,
           null,
@@ -18,13 +18,13 @@
           2,
           1,
           1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           null,
           null,
           null,
@@ -32,7 +32,7 @@
           2,
           1,
           1,
-          1,
+          0,
           null,
           null,
           null,
@@ -972,15 +972,15 @@
           null
         ]
       },
-      "/Users/riquet/Desktop/projectsmanagement/spec/factories/functionnal_tests.rb": {
+      "/Users/riquet/Desktop/projectsmanagement/spec/factories/tickets.rb": {
         "lines": [
           1,
           null,
           1,
           4,
           4,
-          4,
-          4,
+          1,
+          1,
           null,
           null,
           null
@@ -991,6 +991,16 @@
           1,
           null,
           1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
           null,
           null
         ]
@@ -1005,6 +1015,15 @@
           0,
           0,
           0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null,
           null,
           null,
@@ -1076,7 +1095,7 @@
           null
         ]
       },
-      "/Users/riquet/Desktop/projectsmanagement/spec/requests/functionnal_tests_request_spec.rb": {
+      "/Users/riquet/Desktop/projectsmanagement/spec/requests/tickets_request_spec.rb": {
         "lines": [
           1,
           null,
@@ -1092,7 +1111,7 @@
           1,
           1,
           1,
-          1,
+          0,
           0,
           null,
           null,
@@ -1100,14 +1119,28 @@
           null
         ]
       },
-      "/Users/riquet/Desktop/projectsmanagement/app/models/functionnal_test.rb": {
+      "/Users/riquet/Desktop/projectsmanagement/app/models/ticket.rb": {
         "lines": [
           1,
           null,
           1,
           null,
           1,
+          null,
           1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          0,
+          null,
           null,
           null
         ]
@@ -1120,6 +1153,6 @@
         ]
       }
     },
-    "timestamp": 1602201083
+    "timestamp": 1603234135
   }
 }
