@@ -1,7 +1,7 @@
 <h1>Liste des paragraphes</h1>
 
-<div id="paragraphs">
-  <%= render @paragraphs %>
+<div data-controller="drag" data-drag-url="/paragraphs/:id/move" id="paragraphs">
+  <%= render @paragraphs.ordered_by_position %>
 </div>
 
 <%= link_to "Ajouter un paragraphe", new_paragraph_path, class: "btn btn-primary" %>

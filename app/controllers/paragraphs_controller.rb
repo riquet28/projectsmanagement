@@ -1,6 +1,6 @@
 class ParagraphsController < ApplicationController
 
-  before_action :set_paragraph, only: [:edit, :update, :destroy]
+  before_action :set_paragraph, only: [:edit, :update, :destroy, :move]
 
   def index
     @paragraphs = Paragraph.all
@@ -34,6 +34,11 @@ class ParagraphsController < ApplicationController
         format.html { render :edit, notice: "Le paragraphe n'a pas pu être mis à jour" }
       end
     end
+  end
+
+  def move
+    @paragraph.insert_at(params[:position].to_i)
+    head :ok
   end
 
   def destroy

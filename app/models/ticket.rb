@@ -7,7 +7,6 @@ class Ticket < ApplicationRecord
   has_many :scenarios
   has_many :results, :through => :scenarios
 
-
   scope :ordered_by_position, -> { order(position: :asc) }
 
   enum tracker: [ :anomaly, :evolution, :assistance, :user_story ]

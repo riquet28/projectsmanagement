@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :tickets do
     member do
-      patch :move
+      patch :move #Drag js
     end
   end
 
@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     resources :results
   end
 
-  resources :paragraphs
+  resources :paragraphs do
+    member do
+      patch :move #Drag js
+    end
+  end
 
 end
