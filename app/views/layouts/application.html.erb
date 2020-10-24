@@ -10,18 +10,16 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <%= render 'layouts/navigation' %>
-
-  <body class="bg-light">
-    <div class="container-fluid" id="mt100">
-      <div class="row">
-        <div class="col-lg-10 offset-lg-1">
-          <div class="card mt-5">
-            <%= toastr_flash %>
-            <%= yield %>
-          </div>
-        </div>
+  <body>
+    <div class="wrapper">
+      <%= render "base/header" %>
+      <%= render "base/sidebar" %>
+      <div class="content-wrapper">
+        <%= toastr_flash %>
+        <%= yield %>
       </div>
+      <%= render "base/footer" %>
+      <%= render "base/control_sidebar" %>
     </div>
   </body>
 </html>

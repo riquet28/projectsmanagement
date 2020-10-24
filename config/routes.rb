@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  root "home#index"
   patch :update_comment, to: 'tickets#update_comment'
 
   resources :tickets do
