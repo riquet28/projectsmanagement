@@ -1,40 +1,80 @@
-<div class="jumbotron">
-  <h1 class="display-4"><%= @ticket.tracker %> <%= @ticket.issue_id %> | <%= @ticket.title %></h1>
-  <h2><%= @ticket.url_link %></h2>
-  <p class="lead"></p><%= @ticket.description %></p></p>
-  <hr class="my-4">
-  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-  <p class="lead">
-  </p>
+<div class="content-header">
+  <div class="row mb-2">
+
+    <div class="col-sm-6 offset-6">
+      <ol class="breadcrumb float-sm-right">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active">Tickets</li>
+      </ol>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
 </div>
+<!-- /.content-header -->
 
-<div id="scenarios">
-  <%= render @scenarios %>
-</div>
+<!-- Main content -->
+<section class="content">
 
-<div id="new-scenario" class="mb-50">
-  <%= link_to "Nouveau scénario", new_scenario_path(ticket_id: @ticket.id), remote: true, class: "btn btn-dark btn-block" %>
-</div>
+  <div class="jumbotron">
+    <h2><%= @ticket.title %></h2>
+    <h4><%= @ticket.url_link %></h4>
+  </div>
 
-<br>
+  <div class="card">
+    <div class="card-header">
+      <p class="text-center"><b>Ticket <%= @ticket.issue_id %></b></p>
+      <p><%= @ticket.tracker %> <%= @ticket.issue_id %> | <%= @ticket.description %></p>
+      <p><%= @ticket.url_link %></p>
+    </div>
 
-<div class="row" id="commentaire">
-  <div class="col-sm-12">
-    <%= simple_form_for @ticket, :url => update_comment_path(ticket_id: @ticket.id) do |f| %>
-      <div class="card">
-        <div class="card-body">
-          <h4>Commentaire</h4>
-          <div class="form-inputs">
-            <%= f.input :comment, as: :text %>
+    <div class="card-body">
+      <div id="scenarios">
+        <div class="row header-black mb-30">
+          <div class="col-sm-4">
+            <h5>Action</h5>
           </div>
-          <div class="form-actions">
-            <%= f.button :submit, "Mettre à jour", class: "btn btn-primary" %>
+          <div class="col-sm-8">
+            <div class="row">
+              <div class="col-sm-8">
+                <h5>Attendus</h5>
+              </div>
+              <div class="col-sm-2">
+                <h5>Dev</h5>
+              </div>
+              <div class="col-sm-2">
+                <h5>Staging</h5>
+              </div>
+            </div>
           </div>
         </div>
+        <%= render @scenarios %>
       </div>
-    <% end %>
+    </div>
+    <!-- /.card-body -->
+    <div class="card-footer">
+      <div class="float-right" id="new-scenario">
+        <%= link_to "Nouveau scénario", new_scenario_path(ticket_id: @ticket.id), remote: true, class: "btn btn-dark" %>
+      </div>
+    </div>
+    <!-- /.card-footer-->
   </div>
-</div>
+  <!-- /.card -->
 
-<br>
-<br>
+  <div class="row" id="commentaire">
+    <div class="col-sm-12">
+      <%= simple_form_for @ticket, :url => update_comment_path(ticket_id: @ticket.id) do |f| %>
+        <div class="card">
+          <div class="card-body">
+            <h4>Commentaire</h4>
+            <div class="form-inputs">
+              <%= f.input :comment, as: :text %>
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Mettre à jour", class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+</section>

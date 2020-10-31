@@ -1,17 +1,26 @@
-<div class="card project-card mb-3" data-id="<%= ticket.id %>">
-  <div class="card-body">
-    <div class="mb-3">
-      <i class="fas fa-grip-vertical grip text-secondary mr-2"></i>
-      <span class="badge badge-success">Ticket <%= ticket.issue_id %></span>
-      <span class='text-secondary'><small>Tracker: <%= ticket.tracker %></small></span>
-      <span class='text-secondary'><small>Position: <%= ticket.position %></small></span>
-    </div>
-    <h5 class='card-title text-dark'><b><%= ticket.title %></b></h5>
-    <p class='text-secondary'><%= ticket.description %></p>
-    <p class='text-secondary'><%= ticket.url_link %></p>
-    <span><a href="<%= ticket_path(ticket.id) %>" class="btn btn-primary">Voir</a></span>
-    <span><a href="<%= edit_ticket_path(ticket.id) %>" class="btn btn-primary">Editer</a></span>
-    <span><a href="<%= ticket_path(ticket.id) %>" class="btn btn-danger" data-confirm="Etes-vous sur?" data-method="DELETE">Supprimer</a></span>
-    <%= link_to "Voir les tests", scenarios_path(ticket_id: ticket.id), class: "btn btn-primary" %>
+<!-- Default box -->
+<div class="card" data-id="<%= ticket.id %>">
+
+  <div class="card-header text-center">
+    <i class="fas fa-grip-vertical grip text-secondary float-left"></i>
+    <b>Ticket <%= ticket.issue_id %></b>
   </div>
+
+  <div class="card-header">
+    <span class="badge badge-primary"><%= ticket.tracker %> <%= ticket.issue_id %></span> | <b><%= ticket.title %></b>
+    <div class="card-tools">
+      <span><a href="<%= edit_ticket_path(ticket.id) %>" class="btn btn-tool">Editer</a></span>
+      <span><a href="<%= ticket_path(ticket.id) %>" class="btn btn-tool" data-confirm="Etes-vous sur?" data-method="DELETE">Supprimer</a></span>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <%= ticket.description %>
+  </div>
+  <!-- /.card-body -->
+  <div class="card-footer">
+    <%= link_to "Voir les tests", scenarios_path(ticket_id: ticket.id), class: "btn btn-sm btn-info float-right" %>
+  </div>
+  <!-- /.card-footer-->
 </div>
+<!-- /.card -->

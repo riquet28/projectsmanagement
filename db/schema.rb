@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_21_000247) do
+ActiveRecord::Schema.define(version: 2020_10_24_003130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,14 @@ ActiveRecord::Schema.define(version: 2020_10_21_000247) do
     t.index ["ticket_id"], name: "index_scenarios_on_ticket_id"
   end
 
+  create_table "sub_paragraphs", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "position"
+    t.bigint "paragraph_id", null: false
+    t.index ["paragraph_id"], name: "index_sub_paragraphs_on_paragraph_id"
+  end
+
   create_table "tickets", force: :cascade do |t|
     t.integer "tracker"
     t.integer "issue_id"
@@ -77,4 +85,5 @@ ActiveRecord::Schema.define(version: 2020_10_21_000247) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "sub_paragraphs", "paragraphs"
 end

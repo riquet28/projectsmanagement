@@ -4,10 +4,12 @@ class ParagraphsController < ApplicationController
 
   def index
     @paragraphs = Paragraph.all
+    @paragraph = Paragraph.new
   end
 
   def new
     @paragraph = Paragraph.new
+    @paragraph.sub_paragraphs.build
   end
 
   def create
@@ -17,8 +19,7 @@ class ParagraphsController < ApplicationController
         format.html { redirect_to paragraphs_path, notice: "Le paragraphe a été créé avec succès" }
         format.js
       else
-        format.html { render :new, notice: "Le paragraphe n'a pas pu être créé" }
-        format.js
+        format.html { redirect_to paragraphs_path, notice: "Le paragraphe n'a pas pu être créé" }
       end
     end
   end
@@ -30,8 +31,9 @@ class ParagraphsController < ApplicationController
     respond_to do |format|
       if @paragraph.update(paragraph_params)
         format.html { redirect_to paragraphs_path, notice: "Le paragraphe a été mis à jour" }
+        format.js
       else
-        format.html { render :edit, notice: "Le paragraphe n'a pas pu être mis à jour" }
+        format.html { redirect_to paragraphs_path, notice: "Le paragraphe n'a pas pu être mis à jour" }
       end
     end
   end
@@ -43,7 +45,10 @@ class ParagraphsController < ApplicationController
 
   def destroy
     @paragraph.destroy
-    redirect_to paragraphs_path, notice: "Le paragraphe a bien été supprimé"
+    respond_to do |format|
+      format.html {redirect_to paragraphs_path, notice: "Le paragraphe a bien été supprimé"}
+      format.js
+    end
   end
 
   private
@@ -53,7 +58,7 @@ class ParagraphsController < ApplicationController
     end
 
     def paragraph_params
-      params.require(:paragraph).permit(:title, :content, :position)
+      params.require(:paragraph).permit(:title, :content, :position, sub_paragraphs_attributes: [:id, :title, :content, :position, :paragraph_id, :_destroy])
     end
 
 end

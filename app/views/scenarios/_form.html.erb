@@ -1,41 +1,28 @@
 <%= simple_form_for @scenario do |f| %>
-
-  <div class="row to_delete">
+  <div class="row to_delete mb-30">
 
     <div class="col-sm-4 mb-3 mb-md-0">
-      <div class="card">
-        <div class="card-body">
-          <h4>Action</h4>
-          <div class="form-inputs">
-            <%= f.input :description %>
-            <%= f.input :ticket_id, as: :hidden %>
-          </div>
-        </div>
+      <div class="form-inputs">
+        <%= f.input :description, label: false %>
+        <%= f.input :ticket_id, as: :hidden %>
       </div>
     </div>
 
     <div class="col-sm-8">
       <div class="row">
         <div class="col-sm-12">
-          <div class="card">
-            <div class="card-body">
-              <h4>Attendus</h4>
-              <div data-controller="nested-form">
-                <template data-target="nested-form.template">
-                  <%= f.simple_fields_for :results, Result.new, child_index: 'NEW_RECORD' do |r| %>
-                    <%= render "result", form: r %>
-                  <% end %>
-                </template>
-                <%= f.simple_fields_for :results do |r| %>
-                  <%= render "result", form: r %>
-                <% end %>
-                <div class="mb-3" data-target="nested-form.links">
-                  <%= link_to "Ajouter un attendu", "#", class: "btn btn-outline-primary", data: { action: "click->nested-form#add_association" } %>
-                </div>
-              </div>
-              <div class="form-actions">
-                <%= f.button :submit, "Mettre à jour", class: "btn btn-primary" %>
-              </div>
+          <div data-controller="nested-form">
+            <template data-target="nested-form.template">
+              <%= f.simple_fields_for :results, Result.new, child_index: 'NEW_RECORD' do |r| %>
+                <%= render "result", form: r %>
+              <% end %>
+            </template>
+            <%= f.simple_fields_for :results do |r| %>
+              <%= render "result", form: r %>
+            <% end %>
+            <div class="mb-3" data-target="nested-form.links">
+              <%= link_to "Ajouter un attendu", "#", class: "btn btn-outline-primary", data: { action: "click->nested-form#add_association" } %>
+              <%= f.button :submit, "Mettre à jour", class: "btn btn-primary" %>
             </div>
           </div>
         </div>
@@ -43,5 +30,4 @@
     </div>
 
   </div>
-
 <% end %>

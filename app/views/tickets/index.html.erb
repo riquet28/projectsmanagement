@@ -1,43 +1,54 @@
-<div class="card">
-  <div class="card-body">
-    <h2 class='card-title d-flex justify-content-between mb-4'>
-      <span>Tests</span>
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_ticket">Nouveau test</button>
-    </h2>
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="row mb-2">
+    <div class="col-sm-6">
+      <h1 class="m-0 text-dark">Tickets</h1>
+    </div><!-- /.col -->
+    <div class="col-sm-6">
+      <ol class="breadcrumb float-sm-right">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active">Tickets</li>
+      </ol>
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+</div>
+<!-- /.content-header -->
 
-    <div id="container_ticket" data-controller="drag" data-drag-url="/tickets/:id/move">
-      <%= render @tickets.ordered_by_position %>
-    </div>
+<!-- Main content -->
+<section class="content">
 
-    <!-- Modal -->
+  <div id="container_ticket" data-controller="drag" data-drag-url="/tickets/:id/move">
+    <%= render @tickets.ordered_by_position %>
+  </div>
 
-      <div class="modal fade" id="new_ticket" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Créer un nouveau test</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <%= simple_form_for @ticket, remote: true, wrapper: :horizontal_form do |f| %>
-                <%= f.input :tracker, collection: Ticket.trackers.keys, include_blank: false %>
-                <%= f.input :title %>
-                <%= f.input :issue_id %>
-                <%= f.input :url_link %>
-                <%= f.input :description %>
-            </div>
-            <div class="modal-footer">
-                <%= f.button :submit, "Créer", class: "btn-primary" %>
-            </div>
-              <% end %>
-          </div>
-        </div>
+  <button type="button" class="btn btn-secondary float-right" data-toggle="modal" data-target="#new_ticket">Nouveau Ticket</button>
+
+</section>
+<!-- /.content -->
+
+
+<div class="modal fade" id="new_ticket" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Créer un nouveau test</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-
-    <!-- End Modal -->
-
+      <div class="modal-body">
+        <%= simple_form_for @ticket, remote: true, wrapper: :horizontal_form do |f| %>
+          <%= f.input :tracker, collection: Ticket.trackers.keys, include_blank: false %>
+          <%= f.input :title %>
+          <%= f.input :issue_id %>
+          <%= f.input :url_link %>
+          <%= f.input :description %>
+      </div>
+      <div class="modal-footer">
+          <%= f.button :submit, "Créer", class: "btn-primary" %>
+      </div>
+        <% end %>
+    </div>
   </div>
 </div>
+<!-- End Modal -->

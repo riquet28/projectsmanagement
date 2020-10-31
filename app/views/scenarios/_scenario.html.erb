@@ -1,45 +1,35 @@
-<div class="row to_delete">
+<div class="row to_delete mb-30">
 
   <div class="col-sm-4 mb-3 mb-md-0" id="scenario_<%= scenario.id %>">
-    <div class="card">
-      <div class="card-body">
-        <p><%= scenario.description %></p>
-        <p class="delete">
-          <span><%= link_to "Editer", edit_scenario_path(scenario, ticket_id: @ticket.id), remote: true, class: "btn btn-warning" %></span>
-          <span><%= link_to "Supprimer", scenario_path(scenario, ticket_id: @ticket.id), method: :delete, data: {confirm: "Etes-vous sur", remote: true }, class: "btn btn-danger" %></span>
-        </p>
-      </div>
-    </div>
+    <p><%= scenario.description %></p>
+    <p class="delete">
+      <span>
+        <%= link_to edit_scenario_path(scenario, ticket_id: @ticket.id), remote: true do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </span>
+      <span>
+        <%= link_to scenario_path(scenario, ticket_id: @ticket.id), method: :delete, data: {confirm: "Etes-vous sur", remote: true } do %>
+          <i class="fas fa-trash"></i>
+        <% end %>
+      </span>
+    </p>
   </div>
 
   <div class="col-sm-8">
     <% scenario.results.each do |result| %>
       <div class="row">
         <div class="col-sm-8">
-          <div class="card">
-            <div class="card-body">
-              <%= result.description %>
-            </div>
-          </div>
+          <%= result.description %>
         </div>
         <div class="col-sm-2">
-          <div class="card">
-            <div class="card-body">
-              <%= result.dev %>
-            </div>
-          </div>
+          <%= result.dev %>
         </div>
         <div class="col-sm-2">
-          <div class="card">
-            <div class="card-body">
-              <%= result.staging %>
-            </div>
-          </div>
+          <%= result.staging %>
         </div>
       </div>
     <% end %>
   </div>
 
 </div>
-
-<hr>

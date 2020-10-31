@@ -1,21 +1,27 @@
 <%= content_tag :div, class: "nested-fields", data: { new_record: form.object.new_record? } do %>
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-7">
       <div class="form-group">
-        <%= form.input :description %>
+        <%= form.input :description, label: false %>
       </div>
     </div>
     <div class="col-sm-2">
       <div class="form-group">
-        <%= form.input :dev, collection: Result.devs.keys %>
+        <%= form.input :dev, collection: Result.devs.keys, label: false %>
       </div>
     </div>
     <div class="col-sm-2">
       <div class="form-group">
-        <%= form.input :staging, collection: Result.stagings.keys %>
+        <%= form.input :staging, collection: Result.stagings.keys, label: false %>
       </div>
     </div>
-    <small><%= link_to "Remove", "#", data: { action: "click->nested-form#remove_association" } %></small>
+    <div class="col-sm-1">
+      <div class="form-group">
+        <%= link_to "#", data: { action: "click->nested-form#remove_association" } do %>
+          <i class="fas fa-trash"></i>
+        <% end %>
+      </div>
+    </div>
     <%= form.input :_destroy, as: :hidden %>
   </div>
 <% end%>

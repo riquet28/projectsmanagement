@@ -1,0 +1,31 @@
+<%= simple_form_for @paragraph do |f| %>
+  <div class="card">
+    <div class="card-header text-center">
+      <% if action_name == "new" %>
+        <h4>Créer un nouvel élément</h4>
+      <% else %>
+        <h4>Edition de <%= @paragraph.title %></h4>
+      <% end %>
+    </div>
+    <div class="card-body">
+        <%= f.input :title, label: false %>
+        <%= f.input :content, as: :rich_text_area, placeholder: 'Ecrivez votre paragraphe ici', class: 'form-control', label: false %>
+
+        <div data-controller="nested-form">
+          <template data-target="nested-form.template">
+            <%= f.simple_fields_for :sub_paragraphs, SubParagraph.new, child_index: 'NEW_RECORD' do |r| %>
+              <%= render "sub_paragraph", form: r %>
+            <% end %>
+          </template>
+          <%= f.simple_fields_for :sub_paragraphs do |r| %>
+            <%= render "sub_paragraph", form: r %>
+          <% end %>
+          <div class="mb-3" data-target="nested-form.links">
+            <%= link_to "Ajouter un sous-paragraphe", "#", class: "btn btn-outline-primary", data: { action: "click->nested-form#add_association" } %>
+            <%= f.button :submit, "Mettre à jour", class: "btn btn-primary" %>
+          </div>
+        </div>
+    </div>
+    <!-- /.card-body -->
+  </div>
+<% end %>

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :paragraphs do
+    resources :sub_paragraphs
     member do
       patch :move #Drag js
     end
